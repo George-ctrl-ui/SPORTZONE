@@ -9,44 +9,26 @@
     <meta property="og:description" content="Community sports center located in Purok 2, San Francisco, Talibon, Bohol. Court rentals, coaching, and active living." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script src="./theme.js"></script>
     <!-- Link to custom stylesheet -->
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./theme.css" />
   </head>
   <body>
-    <!-- Top Announcement Bar (Location, Hours, Phone) -->
-    <div class="top-bar" id="top-bar">
-      <div class="container top-bar-content">
-        <div class="top-bar-item">
-          <span class="top-icon">📍</span>
-          <span><strong>Location:</strong> Purok 2, San Francisco, Talibon, Bohol</span>
-        </div>
-        <div class="top-bar-group">
-          <div class="top-bar-item">
-            <span class="top-icon">⏰</span>
-            <span>Open Daily: 6:00 AM – 10:00 PM</span>
-          </div>
-          <div class="top-bar-item">
-            <span class="top-icon">📞</span>
-            <a href="tel:+639175557768">+63 (038) 512-9842 / 0917-555-7768</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <a class="skip-link" href="#sports">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <!-- 1. Header & Navigation -->
     <header id="header">
       <nav id="navbar" aria-label="Main Navigation">
         <a href="#home" class="logo-link">
           <div class="logo-group">
-            <h1 class="logo-text" id="logo">
-              <span>⚡</span>Sports Zone
-            </h1>
-            <span class="logo-subtext">San Francisco, Talibon, Bohol</span>
+            <span class="logo-text" id="logo"><span class="brand-mark" aria-hidden="true">&#x03DF;</span> SPORTS<span>ZONE</span><span class="brand-dot">&reg;</span></span>
+
           </div>
         </a>
 
         <!-- Mobile Menu Hamburger Button -->
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -55,116 +37,55 @@
         <!-- Navigation Menu -->
         <ul class="nav-menu" id="nav-menu">
           <li><a href="#home" class="nav-link" id="nav-home">Home</a></li>
-          <li><a href="#about" class="nav-link" id="nav-about">About Us</a></li>
-          <li><a href="#sports" class="nav-link" id="nav-sports">Sports & Rates</a></li>
-          <li><a href="#location" class="nav-link" id="nav-location">Location & Hours</a></li>
+          <li><a href="#about" class="nav-link" id="nav-about">The Zone</a></li>
+          <li><a href="#sports" class="nav-link" id="nav-sports">Sports</a></li>
+          <li><a href="#location" class="nav-link" id="nav-location">Find Us</a></li>
           <li><a href="#gallery" class="nav-link" id="nav-gallery">Gallery</a></li>
-          <li><a href="#contact" class="nav-link" id="nav-contact">Contact & Book</a></li>
+          <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
           <li class="nav-cta-item">
-            <a href="#contact" class="nav-cta-btn" id="nav-book-btn">Book a Court</a>
+            <a href="#contact" class="nav-cta-btn" id="nav-book-btn">Book a Court <span aria-hidden="true">↗</span></a>
           </li>
         </ul>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="theme-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+          <svg class="theme-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg>
+        </button>
       </nav>
     </header>
 
-    <!-- 2. Hero Section with Interactive Photo Slider -->
+
+    <main>
     <section id="home" class="hero">
-      <div class="hero-content">
-        <!-- Location badge in hero -->
-        <div class="hero-location-badge">
-          <span>📍 Purok 2, San Francisco, Talibon, Bohol</span>
-        </div>
-
-        <!-- Sliding Picture Carousel for Basketball, Badminton, Volleyball, Pickleball -->
-        <div class="slider-container" id="hero-slider">
-          <div class="slider-track" id="slider-track">
-            <!-- Slide 1: Basketball -->
-            <div class="slide active" data-index="0">
-              <img
-                src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80"
-                alt="Basketball court and game action at Sports Zone"
-                class="slide-img"
-                loading="eager"
-              />
-              <div class="slide-caption">
-                <span class="slide-badge">🏀 Basketball</span>
-                <p>Full-court tournaments, pickup games, and shooting practice in Talibon</p>
-              </div>
-            </div>
-
-            <!-- Slide 2: Badminton -->
-            <div class="slide" data-index="1">
-              <img
-                src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1200&q=80"
-                alt="Badminton court and racket at Sports Zone"
-                class="slide-img"
-                loading="lazy"
-              />
-              <div class="slide-caption">
-                <span class="slide-badge">🏸 Badminton</span>
-                <p>High-grade vinyl mats with non-glare LED lighting for competitive rallies</p>
-              </div>
-            </div>
-
-            <!-- Slide 3: Volleyball -->
-            <div class="slide" data-index="2">
-              <img
-                src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=1200&q=80"
-                alt="Volleyball net and match play at Sports Zone"
-                class="slide-img"
-                loading="lazy"
-              />
-              <div class="slide-caption">
-                <span class="slide-badge">🏐 Volleyball</span>
-                <p>Regulation height nets, team practices, and exciting community matches</p>
-              </div>
-            </div>
-
-            <!-- Slide 4: Pickleball -->
-            <div class="slide" data-index="3">
-              <img
-                src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=1200&q=80"
-                alt="Pickleball paddle and court at Sports Zone"
-                class="slide-img"
-                loading="lazy"
-              />
-              <div class="slide-caption">
-                <span class="slide-badge">🏓 Pickleball</span>
-                <p>The fastest-growing paddle sport in Bohol for all ages and fitness levels</p>
-              </div>
-            </div>
+      <div class="hero-photo" aria-hidden="true"></div>
+      <div class="hero-lines" aria-hidden="true"></div>
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="status-dot"></span> YOUR HOME COURT. TALIBON, BOHOL.</div>
+          <h1>LESS SCROLL.<br />MORE <em>SPORT.</em></h1>
+          <p class="hero-tagline">Show up. Find your game. Make it count.<br />Your next great rally starts right here at Sports Zone.</p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn" id="hero-btn">Let's Play <span aria-hidden="true">↗</span></a>
+            <a href="#sports" class="btn btn-secondary">Explore the Courts <span aria-hidden="true">↓</span></a>
           </div>
-
-          <!-- Slider Navigation Arrows -->
-          <button class="slider-btn prev-btn" id="slider-prev" aria-label="Previous sport image">‹</button>
-          <button class="slider-btn next-btn" id="slider-next" aria-label="Next sport image">›</button>
-
-          <!-- Slider Dot Indicators -->
-          <div class="slider-dots" id="slider-dots">
-            <button class="dot active" data-slide="0" aria-label="Slide 1: Basketball"></button>
-            <button class="dot" data-slide="1" aria-label="Slide 2: Badminton"></button>
-            <button class="dot" data-slide="2" aria-label="Slide 3: Volleyball"></button>
-            <button class="dot" data-slide="3" aria-label="Slide 4: Pickleball"></button>
-          </div>
+          <div class="hero-community"><span class="community-symbol" aria-hidden="true">✳</span><span>For the competitors. The beginners.<br /><strong>And everyone who loves the game.</strong></span></div>
         </div>
-
-        <h2>Welcome to Sports Zone</h2>
-        <p class="hero-tagline">Your place for sports, fitness, and teamwork in Talibon, Bohol.</p>
-        
-        <div class="hero-buttons">
-          <a href="#sports" class="btn" id="hero-btn">Explore Sports</a>
-          <a href="#location" class="btn btn-secondary" id="hero-location-btn">View Location</a>
+        <div class="hero-side">
+          <span class="vertical-label">BUILT FOR YOUR NEXT LEVEL / 01</span>
+          <a href="#sports" class="court-preview glass">
+            <span class="preview-top"><span class="status-dot"></span> YOUR NEXT SESSION <span aria-hidden="true">↗</span></span>
+            <span class="court-diagram" aria-hidden="true"><span></span></span>
+            <span class="preview-bottom"><span><small>FIND YOUR COURT</small><strong>Game on. All week.</strong></span><span class="preview-number">04<small>SPORTS</small></span></span>
+          </a>
         </div>
+        <div class="hero-bottom"><span>01 / PLAY WITHOUT LIMITS</span><a href="#sports">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span>10.1450° N · 124.3150° E</span></div>
       </div>
     </section>
-
+    <div class="sports-ribbon" aria-label="Basketball, badminton, volleyball, pickleball"><span>BASKETBALL</span><b aria-hidden="true">✳</b><span>BADMINTON</span><b aria-hidden="true">✳</b><span>VOLLEYBALL</span><b aria-hidden="true">✳</b><span>PICKLEBALL</span><b aria-hidden="true">✳</b><span>FIND YOUR GAME</span></div>
     <!-- 3. About Section -->
     <section id="about" class="section">
       <div class="container about-content">
-        <h2 class="section-title">About Us</h2>
-        <p class="about-description">
-          <strong>Sports Zone</strong> is a community-driven athletic center located in <strong>Purok 2, San Francisco, Talibon, Bohol</strong>. Dedicated to promoting sports, fitness, teamwork, and a healthy lifestyle across Northern Bohol, we offer well-maintained indoor and outdoor courts, equipment rentals, youth training clinics, and organized weekend tournaments. Whether you are playing casual recreational games with friends or training competitively, our center provides a safe, welcoming, and energetic environment for athletes of all ages.
-        </p>
+        <p class="eyebrow">THE ZONE / YOUR COMMUNITY</p><h2 class="section-title">Good games.<br /><em>Even better company.</em></h2>
+        <p class="about-description">A little competition. A lot of connection. We’re Talibon’s neighborhood space for big rallies, pickup games, and new personal bests. Bring your team or find one here. There’s a place for every player.</p>
 
         <!-- Feature cards demonstrating a real facility website -->
         <div class="facility-features">
@@ -195,13 +116,13 @@
     <!-- 4. Sports Section -->
     <section id="sports" class="section">
       <div class="container">
-        <h2 class="section-title">Sports We Cover</h2>
+        <div class="section-heading"><div><p class="eyebrow">PICK YOUR PACE</p><h2 class="section-title">Four sports. <em>Your court.</em></h2></div><span class="section-index">01 — 04</span></div>
         <p class="section-subtitle">Choose your sport, gather your team, and book your court in Talibon.</p>
-        
+
         <div class="sports-container" id="sports-grid">
           <!-- Card 1: Basketball -->
           <article class="sport-card" id="card-basketball">
-            <div class="sport-badge" aria-hidden="true">🏀</div>
+            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">01 / THE COURTS</span></div>
             <h3>Basketball</h3>
             <p>
               A high-energy, fast-paced court game that builds agility, precision shooting, vertical leap, and coordinated team play.
@@ -217,7 +138,7 @@
 
           <!-- Card 2: Badminton -->
           <article class="sport-card" id="card-badminton">
-            <div class="sport-badge" aria-hidden="true">🏸</div>
+            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">02 / THE COURTS</span></div>
             <h3>Badminton</h3>
             <p>
               An exhilarating racquet sport demanding rapid reflexes, swift footwork, sharp tactical smashes, and stamina on every rally.
@@ -233,7 +154,7 @@
 
           <!-- Card 3: Volleyball -->
           <article class="sport-card" id="card-volleyball">
-            <div class="sport-badge" aria-hidden="true">🏐</div>
+            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">03 / THE COURTS</span></div>
             <h3>Volleyball</h3>
             <p>
               A classic dynamic sport emphasizing communication, quick set-and-spike combinations, defensive digs, and collective strategy.
@@ -249,7 +170,7 @@
 
           <!-- Card 4: Pickleball -->
           <article class="sport-card" id="card-pickleball">
-            <div class="sport-badge" aria-hidden="true">🏓</div>
+            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">04 / THE COURTS</span></div>
             <h3>Pickleball</h3>
             <p>
               The rapidly growing paddle sport blending elements of tennis and badminton, perfect for social rallies, hand-eye coordination, and fun.
@@ -269,7 +190,7 @@
     <!-- NEW: Dedicated Location & Facility Hours Section -->
     <section id="location" class="section location-section">
       <div class="container">
-        <h2 class="section-title">Location & Facility Hours</h2>
+        <p class="eyebrow">CLOSER THAN YOU THINK</p><h2 class="section-title">Meet you <em>at the Zone.</em></h2>
         <p class="section-subtitle">Easily visit our sports complex in San Francisco, Talibon, Bohol</p>
 
         <div class="location-grid">
@@ -332,7 +253,7 @@
               <span class="map-tag">San Francisco, Talibon, Bohol</span>
               <span class="map-status">🟢 Open for Public & League Play</span>
             </div>
-            
+
             <div class="map-wrapper">
               <iframe
                 title="Sports Zone Location Map in San Francisco, Talibon, Bohol"
@@ -359,33 +280,33 @@
     <!-- 5. Gallery Section -->
     <section id="gallery" class="section">
       <div class="container">
-        <h2 class="section-title">Sports Gallery</h2>
+        <p class="eyebrow">KNOW YOUR PLAYING FIELD</p><h2 class="section-title">Made for <em>your game.</em></h2>
         <p class="section-subtitle">Click on any sport to see court specifications and quick details</p>
-        
+
         <div class="gallery" id="gallery-grid">
           <!-- Basketball Emoji Card -->
-          <div class="gallery-item" id="gallery-item-basketball" data-sport="Basketball">
+          <div class="gallery-item" id="gallery-item-basketball" data-sport="Basketball" role="button" tabindex="0" aria-expanded="false" aria-controls="sport-info-box">
             <span class="gallery-emoji" role="img" aria-label="Basketball">🏀</span>
             <span class="gallery-label">Basketball</span>
             <span class="gallery-sub">Court 1 & 2</span>
           </div>
 
           <!-- Badminton Emoji Card -->
-          <div class="gallery-item" id="gallery-item-badminton" data-sport="Badminton">
+          <div class="gallery-item" id="gallery-item-badminton" data-sport="Badminton" role="button" tabindex="0" aria-expanded="false" aria-controls="sport-info-box">
             <span class="gallery-emoji" role="img" aria-label="Badminton Shuttlecock">🏸</span>
             <span class="gallery-label">Badminton</span>
             <span class="gallery-sub">2 Non-Slip Mats</span>
           </div>
 
           <!-- Volleyball Emoji Card -->
-          <div class="gallery-item" id="gallery-item-volleyball" data-sport="Volleyball">
+          <div class="gallery-item" id="gallery-item-volleyball" data-sport="Volleyball" role="button" tabindex="0" aria-expanded="false" aria-controls="sport-info-box">
             <span class="gallery-emoji" role="img" aria-label="Volleyball">🏐</span>
             <span class="gallery-label">Volleyball</span>
             <span class="gallery-sub">Indoor Court</span>
           </div>
 
           <!-- Ping Pong / Paddle Sports Emoji Card -->
-          <div class="gallery-item" id="gallery-item-paddle" data-sport="Pickleball">
+          <div class="gallery-item" id="gallery-item-paddle" data-sport="Pickleball" role="button" tabindex="0" aria-expanded="false" aria-controls="sport-info-box">
             <span class="gallery-emoji" role="img" aria-label="Paddle and Ping Pong Sports">🏓</span>
             <span class="gallery-label">Pickleball</span>
             <span class="gallery-sub">Outdoor Arena</span>
@@ -393,7 +314,7 @@
         </div>
 
         <!-- Sport Specs Info Box triggered dynamically -->
-        <div id="sport-info-box" class="sport-info-box">
+        <div id="sport-info-box" class="sport-info-box" role="region" aria-labelledby="info-box-title">
           <div class="info-box-header">
             <h4 id="info-box-title">🏀 Basketball Court Specifications</h4>
             <button id="info-box-close" class="info-box-close" aria-label="Close specifications">✕</button>
@@ -412,7 +333,7 @@
     <!-- 6. Contact & Court Reservation Section -->
     <section id="contact" class="section contact">
       <div class="container">
-        <h2 class="section-title">Contact & Court Reservation</h2>
+        <p class="eyebrow">MAKE YOUR NEXT MOVE</p><h2 class="section-title">Your game. <em>Your time.</em></h2>
         <p class="section-subtitle">Inquire about court availability, schedule recurring games, or send a general message</p>
 
         <div class="contact-layout">
@@ -420,7 +341,7 @@
           <div class="contact-summary-card">
             <h3>Get in Touch</h3>
             <p>Have questions about tournaments, membership, or booking multiple court hours in Talibon? We are here to help!</p>
-            
+
             <div class="contact-card-list">
               <div class="contact-card-row">
                 <span class="c-icon">📍</span>
@@ -455,7 +376,7 @@
 
           <!-- Contact / Booking Form -->
           <div class="contact-container">
-            <form id="contact-form" class="contact-form" novalidate>
+            <form id="contact-form" class="contact-form">
               <div class="form-row">
                 <div class="form-group">
                   <label for="contact-name" class="form-label">Full Name <span class="required">*</span></label>
@@ -532,9 +453,10 @@
               </div>
 
               <button type="submit" id="submit-btn" class="btn btn-submit">
-                Send Reservation Inquiry
+                Prepare Booking Inquiry ↗
               </button>
 
+              <p class="form-note">Prepare your inquiry here, then send it by email. Court availability is confirmed by our team.</p>
               <!-- Dynamic Interactive Feedback Container -->
               <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
             </form>
@@ -542,7 +464,7 @@
             <!-- Recent Inquiries Section stored in browser -->
             <div id="recent-inquiries-container" class="recent-inquiries-container" style="display: none;">
               <div class="recent-header">
-                <h5>📋 Your Recent Inquiries</h5>
+                <h5>Your Recent Drafts</h5>
                 <button id="clear-inquiries-btn" class="btn-text-clear" type="button">Clear</button>
               </div>
               <div id="recent-inquiries-list" class="recent-inquiries-list"></div>
@@ -552,6 +474,7 @@
       </div>
     </section>
 
+    </main>
     <!-- 7. Footer -->
     <footer id="footer">
       <div class="container footer-content">
@@ -563,7 +486,7 @@
             Your neighborhood center for sports, fitness, and team play in <strong>Purok 2, San Francisco, Talibon, Bohol</strong>.
           </p>
           <p class="footer-coords">
-            📍 Purok 2, San Francisco, Talibon, Bohol 6325 | 📞 +091234567890
+            📍 Purok 2, San Francisco, Talibon, Bohol 6325 | 📞 +63 917 555 7768
           </p>
         </div>
 

@@ -1,0 +1,187 @@
+/* Shared component colors keep both palettes consistent. */
+:root {
+  color-scheme: dark;
+  --bg: #09090e;
+  --surface: #15121c;
+  --text: #f5f3fa;
+  --muted: #ada6ba;
+  --purple: #b18aff;
+  --line: #d7c2ff20;
+  --primary-accent: #b18aff;
+  --text-primary: var(--text);
+  --text-secondary: var(--muted);
+  --text-muted: var(--muted);
+  --panel-start: #201a2b;
+  --panel-end: #121017;
+  --panel-glow: #b798ff14;
+  --panel-border: #d7c2ff25;
+  --panel-shadow: #03010880;
+  --panel-shine: #ffffff12;
+  --header-bg: #0d0b12e8;
+  --menu-bg: #121018fa;
+  --field-bg: #0f0c15;
+  --field-end: #17121f;
+  --field-focus: #20172d;
+  --field-border: #c7abeb30;
+  --field-label: #bcb0ca;
+  --accent-text: #d5b7ff;
+  --secondary-start: #ffffff0c;
+  --secondary-end: #b99bd009;
+  --secondary-text: #eadffb;
+  --footer-bg: #060609;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f2fa;
+  --surface: #ffffff;
+  --text: #21162e;
+  --muted: #665b74;
+  --purple: #7440ba;
+  --line: #58378024;
+  --primary-accent: #7440ba;
+  --panel-start: #ffffff;
+  --panel-end: #eee7f7;
+  --panel-glow: #b798ff20;
+  --panel-border: #76519b30;
+  --panel-shadow: #43235f20;
+  --panel-shine: #ffffffcc;
+  --header-bg: #faf7ffe8;
+  --menu-bg: #faf7fffa;
+  --field-bg: #faf8ff;
+  --field-end: #f0eaf8;
+  --field-focus: #ffffff;
+  --field-border: #77569d40;
+  --field-label: #675576;
+  --accent-text: #6b369e;
+  --secondary-start: #ffffffaa;
+  --secondary-end: #dac9ef55;
+  --secondary-text: #4d2d70;
+  --footer-bg: #ebe4f3;
+}
+header { background: var(--header-bg); }
+header nav { gap: 20px; }
+.logo-link { order: 0; margin-right: auto; }
+.nav-menu { order: 1; }
+.theme-toggle { order: 2; }
+.mobile-toggle { order: 3; }
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  color: var(--accent-text);
+  background: linear-gradient(135deg, var(--panel-start), var(--panel-end));
+  box-shadow: inset 0 1px var(--panel-shine), 0 5px 15px var(--panel-shadow);
+  transition: border-color .2s, box-shadow .2s;
+}
+.theme-toggle:hover {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px var(--panel-glow);
+}
+.theme-moon { display: none; }
+[data-theme="light"] .theme-sun { display: none; }
+[data-theme="light"] .theme-moon { display: block; }
+.nav-link { color: var(--muted); }
+.nav-link:hover, .nav-link.active { color: var(--text); }
+.hamburger-bar { background: var(--text); }
+.hero { background: #100b19; }
+.hero::before {
+  background: linear-gradient(90deg,#09070ff5 0%,#100b1cdd 40%,#26113f66 100%),linear-gradient(0deg,var(--bg),transparent 40%);
+}
+.hero-tagline, .hero-community, .hero-bottom, .vertical-label { color: var(--muted); }
+.hero-community strong, .hero-bottom a { color: var(--text); }
+.glass {
+  background: linear-gradient(130deg,#b798ff14,#100a1bb3);
+  border-color: var(--panel-border);
+}
+.section { border-bottom-color: var(--line); }
+.section-title em, .section-index { color: var(--muted); }
+.sport-card, .gallery-item, .feature-item {
+  background: radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,0%),var(--panel-glow),transparent 65%),linear-gradient(145deg,var(--panel-start),var(--panel-end));
+  border-color: var(--panel-border);
+  box-shadow: inset 0 1px var(--panel-shine),0 8px 18px var(--panel-shadow),0 24px 45px -28px var(--panel-shadow);
+}
+.contact-container, .contact-summary-card, .location-info-card, .location-map-card, .sport-info-box {
+  background: linear-gradient(135deg,var(--panel-start),var(--panel-end));
+  border-color: var(--panel-border);
+  box-shadow: inset 0 1px var(--panel-shine),0 22px 55px -30px var(--panel-shadow);
+}
+.contact-container { border-top-color: var(--purple); }
+.sport-photo::after { background: linear-gradient(0deg,var(--panel-end),transparent 60%); }
+.detail-tag, .landmark-note, .note-pill, .map-status { color: var(--muted); }
+.detail-rate, .map-tag, .info-box-footer, .inquiry-sport { color: var(--accent-text); }
+.address-text, .hours-list strong, .contact-summary-card h3 { color: var(--text); }
+.contact-summary-card > p, .contact-card-row p, .form-note { color: var(--muted); }
+.contact-card-row strong { color: var(--accent-text); }
+.hours-list li, .inquiry-item { border-bottom-color: var(--line); }
+.btn-secondary, .btn-card-action, .nav-cta-btn {
+  background: linear-gradient(135deg,var(--secondary-start),var(--secondary-end));
+  color: var(--secondary-text);
+  border-color: var(--panel-border);
+  box-shadow: inset 0 1px var(--panel-shine),0 3px 0 var(--panel-shadow),0 8px 16px var(--panel-shadow);
+}
+.btn-secondary:hover, .btn-card-action:hover, .nav-cta-btn:hover {
+  background: linear-gradient(135deg,var(--panel-glow),var(--secondary-end));
+  border-color: var(--purple);
+  box-shadow: inset 0 1px var(--panel-shine),0 3px 0 var(--panel-shadow),0 12px 24px var(--panel-shadow);
+}
+.form-label { color: var(--field-label); }
+.form-group:focus-within .form-label { color: var(--accent-text); }
+.form-input, .form-textarea {
+  background: linear-gradient(145deg,var(--field-bg),var(--field-end));
+  border-color: var(--field-border);
+  color: var(--text);
+  box-shadow: inset 0 2px 5px var(--panel-shadow),0 1px 0 var(--panel-shine);
+}
+.form-input:focus, .form-textarea:focus { background: var(--field-focus); }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+.form-select option { background: var(--surface); color: var(--text); }
+.form-feedback { color: var(--text); }
+.info-box-close, .btn-text-clear { color: var(--muted); }
+footer { background: var(--footer-bg); }
+.footer-tagline, .footer-coords, .footer-links li, .footer-sports li, .footer-bottom { color: var(--muted); }
+/* The light palette includes the hero, map, form, and navigation. */
+[data-theme="light"] .hero { background: #ece1f6; }
+[data-theme="light"] .hero-photo { opacity: .28; }
+[data-theme="light"] .hero::before {
+  background: linear-gradient(90deg,#f5f2faf5 0%,#eee6f5d9 40%,#d2b6eb66 100%),linear-gradient(0deg,var(--bg),transparent 65%);
+}
+[data-theme="light"] .hero::after { opacity: .45; }
+[data-theme="light"] .hero h1 em {
+  background-image: linear-gradient(110deg,#8044b8,#54228a);
+}
+[data-theme="light"] .glass {
+  background: linear-gradient(130deg,#ffffffa6,#e1d2f2a6);
+  box-shadow: 0 16px 50px #43235f20,inset 0 1px #ffffffcc;
+}
+[data-theme="light"] .preview-top { color: #67477c; }
+[data-theme="light"] .preview-bottom small { color: #6b527e; }
+[data-theme="light"] .court-diagram,
+[data-theme="light"] .court-diagram > span,
+[data-theme="light"] .court-diagram::before,
+[data-theme="light"] .court-diagram::after { border-color: #8057a1aa; }
+[data-theme="light"] .court-diagram {
+  background: linear-gradient(90deg,transparent 49.7%,#8057a1aa 49.7%,#8057a1aa 50.3%,transparent 50.3%);
+}
+[data-theme="light"] .map-wrapper { background: #e8dff1; }
+[data-theme="light"] .map-wrapper iframe { filter: none; }
+[data-theme="light"] .form-input:user-invalid,
+[data-theme="light"] .form-textarea:user-invalid { border-color: #b83863; }
+@media(max-width:1100px) and (min-width:851px) {
+  header nav { gap: 12px; padding-inline: 20px; }
+  .nav-menu { gap: 12px; }
+  .nav-cta-btn { gap: 12px; padding-inline: 12px; }
+  header .logo-text { font-size: 19px; }
+}
+@media(max-width:850px) {
+  .nav-menu { background: var(--menu-bg); }
+  header nav { gap: 16px; }
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .sport-card:hover, .feature-item:hover, .gallery-item:hover {
+    box-shadow: inset 0 1px var(--panel-shine),0 16px 24px -12px var(--panel-shadow),0 30px 50px -24px #a16ce14a;
+  }
+}

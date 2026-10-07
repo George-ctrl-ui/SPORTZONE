@@ -1,414 +1,192 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.getElementById('slider-prev');
-  const nextBtn = document.getElementById('slider-next');
-  const sliderContainer = document.getElementById('hero-slider');
-
-  let currentSlide = 0;
-  const totalSlides = slides.length;
-  let slideInterval = null;
-
-  function showSlide(index) {
-    if (index >= totalSlides) {
-      currentSlide = 0;
-    } else if (index < 0) {
-      currentSlide = totalSlides - 1;
-    } else {
-      currentSlide = index;
-    }
-
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === currentSlide);
-    });
-
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSlide);
-    });
-  }
-
-  function nextSlide() {
-    showSlide(currentSlide + 1);
-  }
-
-  function prevSlide() {
-    showSlide(currentSlide - 1);
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      nextSlide();
-      restartAutoSlide();
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      prevSlide();
-      restartAutoSlide();
-    });
-  }
-
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const slideIndex = parseInt(dot.getAttribute('data-slide'), 10);
-      showSlide(slideIndex);
-      restartAutoSlide();
-    });
-  });
-
-  function startAutoSlide() {
-    slideInterval = setInterval(nextSlide, 4500);
-  }
-
-  function stopAutoSlide() {
-    clearInterval(slideInterval);
-  }
-
-  function restartAutoSlide() {
-    stopAutoSlide();
-    startAutoSlide();
-  }
-
-  if (sliderContainer) {
-    sliderContainer.addEventListener('mouseenter', stopAutoSlide);
-    sliderContainer.addEventListener('mouseleave', startAutoSlide);
-  }
-
-  startAutoSlide();
-
-
-  /* ==========================================================================
-     2. MOBILE NAVIGATION MENU TOGGLE
-     ========================================================================== */
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const navMenu = document.getElementById('nav-menu');
-
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      mobileToggle.classList.toggle('active', isOpen);
-      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    // Close menu when clicking any nav link on mobile
-    const allNavLinks = navMenu.querySelectorAll('a');
-    allNavLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        mobileToggle.classList.remove('active');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-
-  /* ==========================================================================
-     3. SMOOTH SCROLLING FOR ANCHOR LINKS
-     ========================================================================== */
-  const navLinks = document.querySelectorAll('a[href^="#"]');
-  const header = document.querySelector('header');
-  const topBar = document.getElementById('top-bar');
-
-  navLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const targetId = link.getAttribute('href');
-
-      if (targetId && targetId.startsWith('#') && targetId.length > 1) {
-        const targetSection = document.querySelector(targetId);
-
-        if (targetSection) {
-          event.preventDefault();
-
-          // Calculate offset dynamically
-          const headerHeight = header ? header.offsetHeight : 70;
-          const topBarHeight = topBar ? topBar.offsetHeight : 0;
-          const totalOffset = headerHeight + 10;
-          const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - totalOffset;
-
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-
-          history.pushState(null, '', targetId);
-        }
-      }
-    });
-  });
-
-
-  /* ==========================================================================
-     4. ACTIVE NAVIGATION LINK ON SCROLL (SCROLLSPY)
-     ========================================================================== */
-  const sections = document.querySelectorAll('section[id]');
-  const menuLinks = document.querySelectorAll('.nav-link');
-
-  function highlightNavOnScroll() {
-    const scrollPosition = window.pageYOffset;
-    const headerHeight = header ? header.offsetHeight : 70;
-
-    sections.forEach((section) => {
-      const top = section.offsetTop - headerHeight - 60;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-
-      if (scrollPosition >= top && scrollPosition < top + height) {
-        menuLinks.forEach((link) => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  }
-
-  window.addEventListener('scroll', highlightNavOnScroll, { passive: true });
-  highlightNavOnScroll();
-
-
-  /* ==========================================================================
-     5. INTERACTIVE SPORT SELECTION & SPECS VIEWER
-     Allows users to click "Inquire Sport" to pre-select it in the booking form.
-     ========================================================================== */
-  const sportSelectButtons = document.querySelectorAll('.select-sport-btn');
-  const sportDropdown = document.getElementById('contact-sport');
-  const contactSection = document.getElementById('contact');
-
-  sportSelectButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const sportName = btn.getAttribute('data-sport');
-      if (sportDropdown && sportName) {
-        sportDropdown.value = sportName;
-      }
-
-      if (contactSection) {
-        const headerHeight = header ? header.offsetHeight : 70;
-        const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-        
-        // Highlight dropdown briefly
-        if (sportDropdown) {
-          sportDropdown.focus();
-        }
-      }
-    });
-  });
-
-  // Gallery interactive info box
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const infoBox = document.getElementById('sport-info-box');
-  const infoBoxTitle = document.getElementById('info-box-title');
-  const infoBoxDesc = document.getElementById('info-box-desc');
-  const infoBoxRate = document.getElementById('info-box-rate');
-  const infoBoxClose = document.getElementById('info-box-close');
-  const infoBoxBookBtn = document.getElementById('info-box-book-btn');
-
-  const sportSpecs = {
-    Basketball: {
-      icon: '🏀',
-      title: 'Basketball Court Specifications',
-      desc: 'FIBA standard full court and half court layout. Hardwood patterned shock-absorbing floor, breakaway spring rims, fiberglass backboards, and 12-head LED arena illumination for night games in Talibon.',
-      rate: 'Rate: ₱250 – ₱400 / hour (Day & Night with lights)'
-    },
-    Badminton: {
-      icon: '🏸',
-      title: 'Badminton Court Specifications',
-      desc: '2 regulation vinyl courts with professional anti-glare overhead lighting and Yonex standard net posts. Equipment rental available (rackets, shuttles, grip tapes).',
-      rate: 'Rate: ₱180 – ₱300 / hour'
-    },
-    Volleyball: {
-      icon: '🏐',
-      title: 'Volleyball Court Specifications',
-      desc: 'Regulation indoor court with adjustable net heights for men, women, and mixed tournaments. Padded antennas, referee elevated stand, and safety boundary margins.',
-      rate: 'Rate: ₱200 – ₱350 / hour'
-    },
-    Pickleball: {
-      icon: '🏓',
-      title: 'Pickleball Court Specifications',
-      desc: 'Dedicated non-skid surface with 7-foot non-volley kitchen zone marking and official regulation pickleball nets. Rental paddles and Dura balls available.',
-      rate: 'Rate: ₱150 – ₱250 / hour'
-    }
+﻿document.addEventListener('DOMContentLoaded', () => {
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const header = document.getElementById('header');
+  const toggle = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('nav-menu');
+  const dropdown = document.getElementById('contact-sport');
+  const progress = document.querySelector('.scroll-progress');
+  const hero = document.querySelector('.hero');
+  const sections = [...document.querySelectorAll('section[id]')];
+  const navLinks = [...document.querySelectorAll('.nav-link')];
+  const closeMenu = () => {
+    menu.classList.remove('open');
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
   };
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menu.classList.contains('open')) {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    if (!header.contains(event.target)) closeMenu();
+  });
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  window.matchMedia('(min-width: 851px)').addEventListener('change', closeMenu);
 
-  let selectedSportKey = 'Basketball';
+  // A single scheduled frame handles all scroll effects; no animation loop at rest.
+  let scheduled = false;
+  function updateScroll() {
+    const y = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = `scaleX(${maxScroll > 0 ? y / maxScroll : 0})`;
+    const offset = Math.min(y, hero.offsetHeight);
+    hero.style.setProperty('--parallax-y', motion.matches ? '0px' : `${offset * .22}px`);
+    hero.style.setProperty('--card-y', motion.matches ? '0px' : `${-offset * .055}px`);
+    let current = 'home';
+    sections.forEach(section => {
+      if (section.getBoundingClientRect().top <= header.offsetHeight + 110) current = section.id;
+    });
+    navLinks.forEach(link => {
+      const active = link.hash === `#${current}`;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    scheduled = false;
+  }
+  function scheduleScroll() {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(updateScroll); }
+  }
+  window.addEventListener('scroll', scheduleScroll, { passive: true });
+  window.addEventListener('resize', scheduleScroll);
+  motion.addEventListener('change', scheduleScroll);
+  updateScroll();
 
-  galleryItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      const sportKey = item.getAttribute('data-sport');
-      if (sportKey && sportSpecs[sportKey]) {
-        selectedSportKey = sportKey;
-        const data = sportSpecs[sportKey];
-
-        galleryItems.forEach((gi) => gi.classList.remove('selected'));
-        item.classList.add('selected');
-
-        if (infoBox && infoBoxTitle && infoBoxDesc && infoBoxRate) {
-          infoBoxTitle.textContent = `${data.icon} ${data.title}`;
-          infoBoxDesc.textContent = data.desc;
-          infoBoxRate.textContent = data.rate;
-          infoBox.style.display = 'block';
+  if ('IntersectionObserver' in window && !motion.matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
-      }
+      });
+    }, { threshold: .08 });
+    document.querySelectorAll('.section-heading, .feature-item, .sport-card, .location-grid, .gallery, .contact-layout').forEach(element => {
+      element.classList.add('reveal');
+      observer.observe(element);
+    });
+  }
+  document.querySelectorAll('.gallery-item, .sport-card, .feature-item').forEach(card => {
+    card.addEventListener('pointermove', event => {
+      if (motion.matches || event.pointerType !== 'mouse') return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
+      card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.removeProperty('--mouse-x');
+      card.style.removeProperty('--mouse-y');
     });
   });
 
-  if (infoBoxClose) {
-    infoBoxClose.addEventListener('click', () => {
-      if (infoBox) infoBox.style.display = 'none';
-      galleryItems.forEach((gi) => gi.classList.remove('selected'));
+  function chooseSport(sport) {
+    dropdown.value = sport;
+    document.getElementById('contact').scrollIntoView({ behavior: motion.matches ? 'instant' : 'smooth' });
+    dropdown.focus({ preventScroll: true });
+  }
+  document.querySelectorAll('.select-sport-btn').forEach(button => {
+    button.addEventListener('click', () => chooseSport(button.dataset.sport));
+  });
+  const specs = {
+    Basketball: ['Full and half court layouts with shock-absorbing flooring, breakaway rims, and LED lighting for evening games.', '₱250 – ₱400 / hour'],
+    Badminton: ['Two regulation vinyl courts with anti-glare lighting. Rackets and shuttlecocks are available to rent.', '₱180 – ₱300 / hour'],
+    Volleyball: ['Indoor court with adjustable net heights for men, women, and mixed tournaments, plus safety boundary margins.', '₱200 – ₱350 / hour'],
+    Pickleball: ['Non-slip playing surface, regulation net, and marked kitchen zone. Rental paddles and balls available.', '₱150 – ₱250 / hour']
+  };
+  const gallery = [...document.querySelectorAll('.gallery-item')];
+  const info = document.getElementById('sport-info-box');
+  let selectedCard = null;
+  function openSpecs(card) {
+    selectedCard = card;
+    gallery.forEach(item => {
+      item.classList.toggle('selected', item === card);
+      item.setAttribute('aria-expanded', String(item === card));
+    });
+    const sport = card.dataset.sport;
+    document.getElementById('info-box-title').textContent = `${sport} Court`;
+    document.getElementById('info-box-desc').textContent = specs[sport][0];
+    document.getElementById('info-box-rate').textContent = specs[sport][1];
+    info.style.display = 'block';
+  }
+  gallery.forEach(card => {
+    card.addEventListener('click', () => openSpecs(card));
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openSpecs(card); }
+    });
+  });
+  document.getElementById('info-box-close').addEventListener('click', () => {
+    info.style.display = 'none';
+    gallery.forEach(card => { card.classList.remove('selected'); card.setAttribute('aria-expanded', 'false'); });
+    selectedCard?.focus({ preventScroll: true });
+  });
+  document.getElementById('info-box-book-btn').addEventListener('click', () => {
+    if (selectedCard) chooseSport(selectedCard.dataset.sport);
+  });
+
+  // The static site prepares an email; it never claims a reservation was sent.
+  const form = document.getElementById('contact-form');
+  const feedback = document.getElementById('form-feedback');
+  const historyPanel = document.getElementById('recent-inquiries-container');
+  const historyList = document.getElementById('recent-inquiries-list');
+  const dateInput = document.getElementById('contact-date');
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Manila', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+  dateInput.min = ['year', 'month', 'day'].map(type => today.find(part => part.type === type).value).join('-');
+  const storageKey = 'sportszone_drafts';
+  let drafts = [];
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    if (Array.isArray(saved)) drafts = saved.filter(item => item && typeof item.sport === 'string' && typeof item.date === 'string').slice(0, 4);
+  } catch { /* The form also works when browser storage is unavailable. */ }
+  function renderDrafts() {
+    historyList.replaceChildren();
+    historyPanel.style.display = drafts.length ? 'block' : 'none';
+    drafts.forEach(draft => {
+      const row = document.createElement('div');
+      row.className = 'inquiry-item';
+      const sport = document.createElement('span');
+      sport.className = 'inquiry-sport';
+      sport.textContent = draft.sport;
+      const date = document.createElement('span');
+      date.className = 'inquiry-date';
+      date.textContent = `Draft · ${draft.date}`;
+      row.append(sport, date);
+      historyList.append(row);
     });
   }
-
-  if (infoBoxBookBtn) {
-    infoBoxBookBtn.addEventListener('click', () => {
-      if (sportDropdown && selectedSportKey) {
-        sportDropdown.value = selectedSportKey;
-      }
-      if (contactSection) {
-        const headerHeight = header ? header.offsetHeight : 70;
-        const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-        if (sportDropdown) sportDropdown.focus();
-      }
-    });
-  }
-
-
-  /* ==========================================================================
-     6. FUNCTIONAL RESERVATION INQUIRY FORM & RECENT HISTORY
-     ========================================================================== */
-  const contactForm = document.getElementById('contact-form');
-  const formFeedback = document.getElementById('form-feedback');
-  const recentInquiriesContainer = document.getElementById('recent-inquiries-container');
-  const recentInquiriesList = document.getElementById('recent-inquiries-list');
-  const clearInquiriesBtn = document.getElementById('clear-inquiries-btn');
-
-  // Load saved inquiries from localStorage
-  function loadRecentInquiries() {
-    try {
-      const saved = localStorage.getItem('sportszone_inquiries');
-      if (!saved) {
-        if (recentInquiriesContainer) recentInquiriesContainer.style.display = 'none';
-        return;
-      }
-
-      const inquiries = JSON.parse(saved);
-      if (Array.isArray(inquiries) && inquiries.length > 0) {
-        if (recentInquiriesList && recentInquiriesContainer) {
-          recentInquiriesList.innerHTML = '';
-          inquiries.slice(0, 4).forEach((item) => {
-            const row = document.createElement('div');
-            row.className = 'inquiry-item';
-            row.innerHTML = `
-              <div>
-                <span class="inquiry-sport">${escapeHtml(item.sport || 'General')}</span>
-                <span style="color: #64748b; font-size: 0.8rem;"> — ${escapeHtml(item.name)}</span>
-              </div>
-              <div class="inquiry-date">Ref: #${escapeHtml(item.ref)} • ${escapeHtml(item.date || 'Soon')}</div>
-            `;
-            recentInquiriesList.appendChild(row);
-          });
-          recentInquiriesContainer.style.display = 'block';
-        }
-      } else {
-        if (recentInquiriesContainer) recentInquiriesContainer.style.display = 'none';
-      }
-    } catch (e) {
-      console.warn('LocalStorage error:', e);
-    }
-  }
-
-  // Escape helper for safe HTML rendering
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>"']/g, (m) => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#39;'
-    }[m]));
-  }
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const nameInput = document.getElementById('contact-name');
-      const phoneInput = document.getElementById('contact-phone');
-      const emailInput = document.getElementById('contact-email');
-      const sportInput = document.getElementById('contact-sport');
-      const dateInput = document.getElementById('contact-date');
-      const messageInput = document.getElementById('contact-message');
-
-      const name = nameInput ? nameInput.value.trim() : '';
-      const phone = phoneInput ? phoneInput.value.trim() : '';
-      const email = emailInput ? emailInput.value.trim() : '';
-      const sport = sportInput ? sportInput.value : 'General Inquiry';
-      const date = dateInput && dateInput.value ? dateInput.value : 'Anytime';
-      const message = messageInput ? messageInput.value.trim() : '';
-
-      // Simple validation
-      if (!name || !phone) {
-        alert('Please provide your name and contact phone number.');
-        return;
-      }
-
-      // Generate simulated reservation reference ID
-      const refId = 'SZ-' + Math.floor(100000 + Math.random() * 900000);
-
-      // Render functional receipt confirmation
-      if (formFeedback) {
-        formFeedback.className = 'form-feedback success';
-        formFeedback.innerHTML = `
-          <strong>✅ Inquiry Received, ${escapeHtml(name)}!</strong>
-          <p style="margin-top: 0.25rem;">Our center desk at <strong>Purok 2, San Francisco, Talibon, Bohol</strong> will contact you at <strong>${escapeHtml(phone)}</strong> to confirm court availability.</p>
-          <div class="feedback-receipt">
-            <strong>Reservation Reference:</strong> #${refId}<br />
-            <strong>Sport / Facility:</strong> ${escapeHtml(sport)}<br />
-            <strong>Requested Date:</strong> ${escapeHtml(date)}<br />
-            <strong>Location:</strong> Sports Zone, Purok 2, San Francisco, Talibon, Bohol
-          </div>
-        `;
-        formFeedback.style.display = 'block';
-        formFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-
-      // Save inquiry to localStorage
-      try {
-        const saved = localStorage.getItem('sportszone_inquiries');
-        const list = saved ? JSON.parse(saved) : [];
-        list.unshift({
-          ref: refId,
-          name,
-          sport,
-          date,
-          timestamp: new Date().toISOString()
-        });
-        localStorage.setItem('sportszone_inquiries', JSON.stringify(list.slice(0, 10)));
-        loadRecentInquiries();
-      } catch (e) {
-        console.warn('LocalStorage save error:', e);
-      }
-
-      // Reset form
-      contactForm.reset();
-    });
-  }
-
-  // Clear inquiries button
-  if (clearInquiriesBtn) {
-    clearInquiriesBtn.addEventListener('click', () => {
-      localStorage.removeItem('sportszone_inquiries');
-      if (recentInquiriesContainer) recentInquiriesContainer.style.display = 'none';
-      if (recentInquiriesList) recentInquiriesList.innerHTML = '';
-    });
-  }
-
-  // Initial load of inquiries
-  loadRecentInquiries();
-
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const values = Object.fromEntries(new FormData(form));
+    const subject = `Sports Zone inquiry — ${values.sport}`;
+    const body = `Name: ${values.name.trim()}\nPhone: ${values.phone.trim()}\nEmail: ${values.email.trim()}\nSport: ${values.sport}\nPreferred date: ${values.date || 'Flexible'}\n\n${values.message.trim()}`;
+    feedback.replaceChildren();
+    const title = document.createElement('strong');
+    title.textContent = 'Your inquiry is ready.';
+    const note = document.createElement('p');
+    note.textContent = 'Open your email app below and send the message to request availability. Your court is not reserved yet. You can also call +63 917 555 7768.';
+    const send = document.createElement('a');
+    send.className = 'btn';
+    send.textContent = 'Open Email App ↗';
+    send.href = `mailto:sportszone.talibon@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    feedback.append(title, note, send);
+    feedback.className = 'form-feedback success';
+    feedback.scrollIntoView({ behavior: motion.matches ? 'instant' : 'smooth', block: 'nearest' });
+    drafts.unshift({ sport: values.sport, date: values.date || 'Flexible' });
+    drafts = drafts.slice(0, 4);
+    try { localStorage.setItem(storageKey, JSON.stringify(drafts)); } catch { /* Draft history is optional. */ }
+    renderDrafts();
+  });
+  document.getElementById('clear-inquiries-btn').addEventListener('click', () => {
+    drafts = [];
+    try { localStorage.removeItem(storageKey); } catch { /* Clear the in-memory view regardless. */ }
+    renderDrafts();
+  });
+  renderDrafts();
 });
