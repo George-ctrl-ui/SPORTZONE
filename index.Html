@@ -22,7 +22,7 @@
       <nav id="navbar" aria-label="Main Navigation">
         <a href="#home" class="logo-link">
           <div class="logo-group">
-            <span class="logo-text" id="logo"><span class="brand-mark" aria-hidden="true">&#x03DF;</span> SPORTS<span>ZONE</span><span class="brand-dot">&reg;</span></span>
+            <span class="logo-text" id="logo"><span class="brand-mark" aria-hidden="true">/</span> SPORTS<span>ZONE</span></span>
 
           </div>
         </a>
@@ -40,10 +40,10 @@
           <li><a href="#about" class="nav-link" id="nav-about">The Zone</a></li>
           <li><a href="#sports" class="nav-link" id="nav-sports">Sports</a></li>
           <li><a href="#location" class="nav-link" id="nav-location">Find Us</a></li>
-          <li><a href="#gallery" class="nav-link" id="nav-gallery">Gallery</a></li>
+          <li><a href="#gallery" class="nav-link" id="nav-gallery">Court guide</a></li>
           <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
           <li class="nav-cta-item">
-            <a href="#contact" class="nav-cta-btn" id="nav-book-btn">Book a Court <span aria-hidden="true">↗</span></a>
+            <a href="#contact" class="nav-cta-btn" id="nav-book-btn">Court inquiry <span aria-hidden="true">↗</span></a>
           </li>
         </ul>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
@@ -60,14 +60,14 @@
       <div class="hero-lines" aria-hidden="true"></div>
       <div class="container hero-layout">
         <div class="hero-content">
-          <div class="eyebrow"><span class="status-dot"></span> YOUR HOME COURT. TALIBON, BOHOL.</div>
-          <h1>LESS SCROLL.<br />MORE <em>SPORT.</em></h1>
+          <div class="eyebrow"><span class="status-dot"></span> A SPACE TO PLAY. TALIBON, BOHOL.</div>
+          <h1>Your time.<br />Your court.<br /><em>Your zone.</em></h1>
           <p class="hero-tagline">Show up. Find your game. Make it count.<br />Your next great rally starts right here at Sports Zone.</p>
           <div class="hero-buttons">
-            <a href="#contact" class="btn" id="hero-btn">Let's Play <span aria-hidden="true">↗</span></a>
+            <a href="#contact" class="btn" id="hero-btn">Plan your session <span aria-hidden="true">↗</span></a>
             <a href="#sports" class="btn btn-secondary">Explore the Courts <span aria-hidden="true">↓</span></a>
           </div>
-          <div class="hero-community"><span class="community-symbol" aria-hidden="true">✳</span><span>For the competitors. The beginners.<br /><strong>And everyone who loves the game.</strong></span></div>
+          <div class="hero-community"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14M3 9h4v6H3m18-6h-4v6h4"/><circle cx="12" cy="12" r="3"/></svg><span>For the competitors. The beginners.<br /><strong>And everyone who loves the game.</strong></span></div>
         </div>
         <div class="hero-side">
           <span class="vertical-label">BUILT FOR YOUR NEXT LEVEL / 01</span>
@@ -80,8 +80,76 @@
         <div class="hero-bottom"><span>01 / PLAY WITHOUT LIMITS</span><a href="#sports">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span>10.1450° N · 124.3150° E</span></div>
       </div>
     </section>
-    <div class="sports-ribbon" aria-label="Basketball, badminton, volleyball, pickleball"><span>BASKETBALL</span><b aria-hidden="true">✳</b><span>BADMINTON</span><b aria-hidden="true">✳</b><span>VOLLEYBALL</span><b aria-hidden="true">✳</b><span>PICKLEBALL</span><b aria-hidden="true">✳</b><span>FIND YOUR GAME</span></div>
+    <div class="sports-ribbon" aria-label="Basketball, badminton, volleyball, pickleball"><span>BASKETBALL</span><b aria-hidden="true"></b><span>BADMINTON</span><b aria-hidden="true"></b><span>VOLLEYBALL</span><b aria-hidden="true"></b><span>PICKLEBALL</span><b aria-hidden="true"></b><span>FIND YOUR GAME</span></div>
     <!-- 3. About Section -->
+
+
+    <!-- 4. Sports Section -->
+    <section id="sports" class="section">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">PICK YOUR PACE</p><h2 class="section-title">Four sports. <em>Your court.</em></h2></div><span class="section-index">01 — 04</span></div>
+        <p class="section-subtitle">A quick rally or a full team session. Find the space for your kind of play.</p>
+
+        <div class="sport-filters" role="group" aria-label="Filter courts"><button type="button" class="filter-chip active" data-filter="All courts" aria-pressed="true">All courts</button><button type="button" class="filter-chip" data-filter="Basketball" aria-pressed="false">Basketball</button><button type="button" class="filter-chip" data-filter="Badminton" aria-pressed="false">Badminton</button><button type="button" class="filter-chip" data-filter="Volleyball" aria-pressed="false">Volleyball</button><button type="button" class="filter-chip" data-filter="Pickleball" aria-pressed="false">Pickleball</button></div><p class="sr-only" id="filter-status" aria-live="polite"></p><div class="sports-container" id="sports-grid">
+          <!-- Card 1: Basketball -->
+          <article class="sport-card" id="card-basketball">
+            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">01 / THE COURTS</span></div>
+            <h3>Basketball</h3>
+            <p>Full and half court options for pickup games, team practice, and friendly competition.</p>
+            <div class="card-details">
+              <span class="detail-tag">Full & Half Court</span>
+              <span class="detail-rate">₱250 – ₱400 / hr</span>
+            </div>
+            <button type="button" class="btn-card-action select-sport-btn" data-sport="Basketball">
+              Select court <span aria-hidden="true">↗</span>
+            </button>
+          </article>
+
+          <!-- Card 2: Badminton -->
+          <article class="sport-card" id="card-badminton">
+            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">02 / THE COURTS</span></div>
+            <h3>Badminton</h3>
+            <p>Indoor vinyl mats for singles, doubles, and your next great rally.</p>
+            <div class="card-details">
+              <span class="detail-tag">Indoor Vinyl Mat</span>
+              <span class="detail-rate">₱180 – ₱300 / hr</span>
+            </div>
+            <button type="button" class="btn-card-action select-sport-btn" data-sport="Badminton">
+              Select court <span aria-hidden="true">↗</span>
+            </button>
+          </article>
+
+          <!-- Card 3: Volleyball -->
+          <article class="sport-card" id="card-volleyball">
+            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">03 / THE COURTS</span></div>
+            <h3>Volleyball</h3>
+            <p>An indoor court with adjustable net heights for your team’s next session.</p>
+            <div class="card-details">
+              <span class="detail-tag">Standard Net Heights</span>
+              <span class="detail-rate">₱200 – ₱350 / hr</span>
+            </div>
+            <button type="button" class="btn-card-action select-sport-btn" data-sport="Volleyball">
+              Select court <span aria-hidden="true">↗</span>
+            </button>
+          </article>
+
+          <!-- Card 4: Pickleball -->
+          <article class="sport-card" id="card-pickleball">
+            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">04 / THE COURTS</span></div>
+            <h3>Pickleball</h3>
+            <p>A dedicated non-slip court. Bring your paddles, or ask us about rentals.</p>
+            <div class="card-details">
+              <span class="detail-tag">Dedicated Non-Slip Court</span>
+              <span class="detail-rate">₱150 – ₱250 / hr</span>
+            </div>
+            <button type="button" class="btn-card-action select-sport-btn" data-sport="Pickleball">
+              Select court <span aria-hidden="true">↗</span>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="about" class="section">
       <div class="container about-content">
         <p class="eyebrow">THE ZONE / YOUR COMMUNITY</p><h2 class="section-title">Good games.<br /><em>Even better company.</em></h2>
@@ -90,103 +158,28 @@
         <!-- Feature cards demonstrating a real facility website -->
         <div class="facility-features">
           <div class="feature-item">
-            <span class="feature-icon">🏟️</span>
+            <span class="feature-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 5v14M3 9h4v6H3m18-6h-4v6h4"/><circle cx="12" cy="12" r="3"/></svg></span>
             <h4>Regulation Courts</h4>
             <p>Quality flooring with clear standard boundaries for basketball, badminton, volleyball, and pickleball.</p>
           </div>
           <div class="feature-item">
-            <span class="feature-icon">💡</span>
+            <span class="feature-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0l-1 2H9z"/></svg></span>
             <h4>Night Floodlights</h4>
             <p>Evenly distributed LED lighting system enabling safe, high-visibility play up to 10:00 PM nightly.</p>
           </div>
           <div class="feature-item">
-            <span class="feature-icon">🚿</span>
+            <span class="feature-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3S5 11 5 15a7 7 0 0 0 14 0c0-4-7-12-7-12Z"/></svg></span>
             <h4>Clean Facilities</h4>
             <p>On-site locker changing rooms, clean restrooms, spectator benches, and cold drinking water refilling.</p>
           </div>
           <div class="feature-item">
-            <span class="feature-icon">🛡️</span>
+            <span class="feature-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6zM8 12l3 3 5-6"/></svg></span>
             <h4>Gear & Rentals</h4>
             <p>Convenient ball and paddle rentals, tournament refereeing services, and first-aid support available.</p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- 4. Sports Section -->
-    <section id="sports" class="section">
-      <div class="container">
-        <div class="section-heading"><div><p class="eyebrow">PICK YOUR PACE</p><h2 class="section-title">Four sports. <em>Your court.</em></h2></div><span class="section-index">01 — 04</span></div>
-        <p class="section-subtitle">Choose your sport, gather your team, and book your court in Talibon.</p>
-
-        <div class="sports-container" id="sports-grid">
-          <!-- Card 1: Basketball -->
-          <article class="sport-card" id="card-basketball">
-            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">01 / THE COURTS</span></div>
-            <h3>Basketball</h3>
-            <p>
-              A high-energy, fast-paced court game that builds agility, precision shooting, vertical leap, and coordinated team play.
-            </p>
-            <div class="card-details">
-              <span class="detail-tag">Full & Half Court</span>
-              <span class="detail-rate">₱250 – ₱400 / hr</span>
-            </div>
-            <button type="button" class="btn-card-action select-sport-btn" data-sport="Basketball">
-              Inquire Basketball Court →
-            </button>
-          </article>
-
-          <!-- Card 2: Badminton -->
-          <article class="sport-card" id="card-badminton">
-            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">02 / THE COURTS</span></div>
-            <h3>Badminton</h3>
-            <p>
-              An exhilarating racquet sport demanding rapid reflexes, swift footwork, sharp tactical smashes, and stamina on every rally.
-            </p>
-            <div class="card-details">
-              <span class="detail-tag">Indoor Vinyl Mat</span>
-              <span class="detail-rate">₱180 – ₱300 / hr</span>
-            </div>
-            <button type="button" class="btn-card-action select-sport-btn" data-sport="Badminton">
-              Inquire Badminton Court →
-            </button>
-          </article>
-
-          <!-- Card 3: Volleyball -->
-          <article class="sport-card" id="card-volleyball">
-            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">03 / THE COURTS</span></div>
-            <h3>Volleyball</h3>
-            <p>
-              A classic dynamic sport emphasizing communication, quick set-and-spike combinations, defensive digs, and collective strategy.
-            </p>
-            <div class="card-details">
-              <span class="detail-tag">Standard Net Heights</span>
-              <span class="detail-rate">₱200 – ₱350 / hr</span>
-            </div>
-            <button type="button" class="btn-card-action select-sport-btn" data-sport="Volleyball">
-              Inquire Volleyball Court →
-            </button>
-          </article>
-
-          <!-- Card 4: Pickleball -->
-          <article class="sport-card" id="card-pickleball">
-            <div class="sport-photo"><img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?auto=format&fit=crop&w=650&q=80" alt="" loading="lazy" /><span class="sport-number">04 / THE COURTS</span></div>
-            <h3>Pickleball</h3>
-            <p>
-              The rapidly growing paddle sport blending elements of tennis and badminton, perfect for social rallies, hand-eye coordination, and fun.
-            </p>
-            <div class="card-details">
-              <span class="detail-tag">Dedicated Non-Slip Court</span>
-              <span class="detail-rate">₱150 – ₱250 / hr</span>
-            </div>
-            <button type="button" class="btn-card-action select-sport-btn" data-sport="Pickleball">
-              Inquire Pickleball Court →
-            </button>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- NEW: Dedicated Location & Facility Hours Section -->
     <section id="location" class="section location-section">
       <div class="container">
@@ -197,7 +190,7 @@
           <!-- Address & Directions Details -->
           <div class="location-info-card">
             <div class="info-block">
-              <div class="info-icon">📍</div>
+              <div class="info-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
               <div>
                 <h3>Official Center Address</h3>
                 <p class="address-text">
@@ -211,7 +204,7 @@
             </div>
 
             <div class="info-block">
-              <div class="info-icon">⏰</div>
+              <div class="info-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
               <div>
                 <h3>Operating Schedule</h3>
                 <ul class="hours-list">
@@ -223,7 +216,7 @@
             </div>
 
             <div class="info-block">
-              <div class="info-icon">📞</div>
+              <div class="info-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 3 3 5-3 3a15 15 0 0 0 6 6l3-3 5 3-1 4C10 22 2 14 3 4z"/></svg></div>
               <div>
                 <h3>Direct Contacts</h3>
                 <p>Landline: +63 (038) 512-9842</p>
@@ -239,10 +232,10 @@
                 rel="noopener noreferrer"
                 class="btn btn-directions"
               >
-                🗺️ Open in Google Maps
+                 Open in Google Maps
               </a>
               <a href="#contact" class="btn btn-secondary">
-                📅 Reserve a Slot
+                 Court inquiry
               </a>
             </div>
           </div>
@@ -251,7 +244,7 @@
           <div class="location-map-card">
             <div class="map-header">
               <span class="map-tag">San Francisco, Talibon, Bohol</span>
-              <span class="map-status">🟢 Open for Public & League Play</span>
+              <span class="map-status"> Open for Public & League Play</span>
             </div>
 
             <div class="map-wrapper">
@@ -268,9 +261,9 @@
             </div>
 
             <div class="map-footer-notes">
-              <div class="note-pill">🚗 Free Customer Parking</div>
-              <div class="note-pill">🛵 Motorcycle Bays</div>
-              <div class="note-pill">💧 Water Refill Station</div>
+              <div class="note-pill"> Free Customer Parking</div>
+              <div class="note-pill"> Motorcycle Bays</div>
+              <div class="note-pill"> Water Refill Station</div>
             </div>
           </div>
         </div>
@@ -281,33 +274,33 @@
     <section id="gallery" class="section">
       <div class="container">
         <p class="eyebrow">KNOW YOUR PLAYING FIELD</p><h2 class="section-title">Made for <em>your game.</em></h2>
-        <p class="section-subtitle">Click on any sport to see court specifications and quick details</p>
+        <p class="section-subtitle">Take a closer look. Select a sport to explore the court details.</p>
 
         <div class="gallery" id="gallery-grid">
-          <!-- Basketball Emoji Card -->
+          
           <div class="gallery-item" id="gallery-item-basketball" data-sport="Basketball" role="button" tabindex="0" aria-expanded="false" aria-controls="sport-info-box">
-            <span class="gallery-emoji" role="img" aria-label="Basketball">🏀</span>
+            <span class="gallery-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5 6c7 3 7 9 0 12M19 6c-7 3-7 9 0 12"/></svg></span>
             <span class="gallery-label">Basketball</span>
             <span class="gallery-sub">Court 1 & 2</span>
           </div>
 
-          <!-- Badminton Emoji Card -->
+          
           <div class="gallery-item" id="gallery-item-badminton" data-sport="Badminton" role="button" tabindex="0" aria-expanded="false" aria-controls="sport-info-box">
-            <span class="gallery-emoji" role="img" aria-label="Badminton Shuttlecock">🏸</span>
+            <span class="gallery-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="14" cy="9" rx="6" ry="7" transform="rotate(35 14 9)"/><path d="m10 14-7 8m7-17 8 6m-9-2 7 5"/></svg></span>
             <span class="gallery-label">Badminton</span>
             <span class="gallery-sub">2 Non-Slip Mats</span>
           </div>
 
-          <!-- Volleyball Emoji Card -->
+          
           <div class="gallery-item" id="gallery-item-volleyball" data-sport="Volleyball" role="button" tabindex="0" aria-expanded="false" aria-controls="sport-info-box">
-            <span class="gallery-emoji" role="img" aria-label="Volleyball">🏐</span>
+            <span class="gallery-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="1"/><path d="M3 21V3m18 18V3M9 5v12m6-12v12M3 11h18"/></svg></span>
             <span class="gallery-label">Volleyball</span>
             <span class="gallery-sub">Indoor Court</span>
           </div>
 
-          <!-- Ping Pong / Paddle Sports Emoji Card -->
+          
           <div class="gallery-item" id="gallery-item-paddle" data-sport="Pickleball" role="button" tabindex="0" aria-expanded="false" aria-controls="sport-info-box">
-            <span class="gallery-emoji" role="img" aria-label="Paddle and Ping Pong Sports">🏓</span>
+            <span class="gallery-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 15C1 9 7 1 14 3s10 10 2 14l-5-2-6 7-3-3z"/></svg></span>
             <span class="gallery-label">Pickleball</span>
             <span class="gallery-sub">Outdoor Arena</span>
           </div>
@@ -316,15 +309,15 @@
         <!-- Sport Specs Info Box triggered dynamically -->
         <div id="sport-info-box" class="sport-info-box" role="region" aria-labelledby="info-box-title">
           <div class="info-box-header">
-            <h4 id="info-box-title">🏀 Basketball Court Specifications</h4>
-            <button id="info-box-close" class="info-box-close" aria-label="Close specifications">✕</button>
+            <h4 id="info-box-title"> Basketball Court Specifications</h4>
+            <button id="info-box-close" class="info-box-close" aria-label="Close specifications"></button>
           </div>
           <p id="info-box-desc">
             Standard court with breakaway rims, fiberglass backboards, shock-absorbing synthetic surface, and LED high-bay lights.
           </p>
           <div class="info-box-footer">
             <span id="info-box-rate">Rate: ₱250 - ₱400 / hr</span>
-            <button class="btn btn-sm" id="info-box-book-btn">Book This Sport</button>
+            <button class="btn btn-sm" id="info-box-book-btn">Inquire about this court</button>
           </div>
         </div>
       </div>
@@ -342,33 +335,33 @@
             <h3>Get in Touch</h3>
             <p>Have questions about tournaments, membership, or booking multiple court hours in Talibon? We are here to help!</p>
 
-            <div class="contact-card-list">
+            <div class="session-summary" aria-live="polite"><span class="eyebrow">YOUR SESSION</span><h4 id="session-sport">Choose your court</h4><p id="session-detail">Select a sport and duration to see an estimate.</p><strong id="session-price">Let’s make time to play.</strong><small>Estimated court hire. Final rate and availability confirmed by our team.</small></div><div class="contact-card-list">
               <div class="contact-card-row">
-                <span class="c-icon">📍</span>
+                <span class="c-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
                 <div>
                   <strong>Location</strong>
                   <p>Purok 2, San Francisco, Talibon, Bohol</p>
                 </div>
               </div>
               <div class="contact-card-row">
-                <span class="c-icon">📞</span>
+                <span class="c-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 3 3 5-3 3a15 15 0 0 0 6 6l3-3 5 3-1 4C10 22 2 14 3 4z"/></svg></span>
                 <div>
                   <strong>Hotlines</strong>
                   <p>+63 (038) 512-9842<br />+63 917 555 7768</p>
                 </div>
               </div>
               <div class="contact-card-row">
-                <span class="c-icon">✉️</span>
+                <span class="c-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg></span>
                 <div>
                   <strong>Email</strong>
                   <p>sportszone.talibon@gmail.com</p>
                 </div>
               </div>
               <div class="contact-card-row">
-                <span class="c-icon">🕒</span>
+                <span class="c-icon"><svg class="line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
                 <div>
                   <strong>Facility Hours</strong>
-                  <p>Open 7 Days a week: 6:00 AM – 10:00 PM</p>
+                  <p>Weekdays: 6 AM – 10 PM<br />Weekends: 5:30 AM – 10:30 PM</p>
                 </div>
               </div>
             </div>
@@ -396,7 +389,7 @@
                   <input
                     type="tel"
                     id="contact-phone"
-                    name="phone"
+                    name="phone" autocomplete="tel"
                     class="form-input"
                     placeholder="e.g. 0917 123 4567"
                     required
@@ -421,11 +414,11 @@
                   <label for="contact-sport" class="form-label">Sport / Facility <span class="required">*</span></label>
                   <select id="contact-sport" name="sport" class="form-input form-select" required>
                     <option value="">Select a Sport...</option>
-                    <option value="Basketball">🏀 Basketball Court</option>
-                    <option value="Badminton">🏸 Badminton Court</option>
-                    <option value="Volleyball">🏐 Volleyball Court</option>
-                    <option value="Pickleball">🏓 Pickleball Court</option>
-                    <option value="General Inquiry">ℹ️ General Facility Inquiry</option>
+                    <option value="Basketball"> Basketball Court</option>
+                    <option value="Badminton"> Badminton Court</option>
+                    <option value="Volleyball"> Volleyball Court</option>
+                    <option value="Pickleball"> Pickleball Court</option>
+                    <option value="General Inquiry"> General Facility Inquiry</option>
                   </select>
                 </div>
 
@@ -440,15 +433,14 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="contact-message" class="form-label">Message / Time Preference <span class="required">*</span></label>
+              <div class="form-row"><div class="form-group"><label for="contact-time" class="form-label">Preferred time</label><input id="contact-time" name="time" type="time" class="form-input" /></div><div class="form-group"><label for="contact-duration" class="form-label">Duration</label><select id="contact-duration" name="duration" class="form-input"><option value="1">1 hour</option><option value="1.5">1.5 hours</option><option value="2">2 hours</option><option value="3">3 hours</option></select></div></div><div class="form-group">
+                <label for="contact-message" class="form-label">Anything else? <span class="optional">Optional</span></label>
                 <textarea
                   id="contact-message"
                   name="message"
                   class="form-textarea"
-                  placeholder="Let us know your preferred court time slot (e.g. 6:00 PM - 8:00 PM) or any equipment needs..."
-                  rows="4"
-                  required
+                  placeholder="Equipment rentals, group size, or anything we can help with…"
+                  rows="3"
                 ></textarea>
               </div>
 
@@ -480,13 +472,13 @@
       <div class="container footer-content">
         <div class="footer-brand">
           <div class="logo-text">
-            <span>⚡</span>Sports Zone
+            <span class="brand-mark">/</span>SPORTS ZONE
           </div>
           <p class="footer-tagline">
             Your neighborhood center for sports, fitness, and team play in <strong>Purok 2, San Francisco, Talibon, Bohol</strong>.
           </p>
           <p class="footer-coords">
-            📍 Purok 2, San Francisco, Talibon, Bohol 6325 | 📞 +63 917 555 7768
+             Purok 2, San Francisco, Talibon, Bohol 6325 |  +63 917 555 7768
           </p>
         </div>
 
@@ -497,7 +489,7 @@
             <li><a href="#about">About Us</a></li>
             <li><a href="#sports">Sports & Rates</a></li>
             <li><a href="#location">Location & Hours</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#gallery">Court guide</a></li>
             <li><a href="#contact">Contact & Booking</a></li>
           </ul>
         </div>
@@ -505,10 +497,10 @@
         <div class="footer-sports">
           <h4>Sports Offered</h4>
           <ul>
-            <li>🏀 Basketball Court</li>
-            <li>🏸 Badminton Courts</li>
-            <li>🏐 Volleyball Arena</li>
-            <li>🏓 Pickleball Court</li>
+            <li> Basketball Court</li>
+            <li> Badminton Courts</li>
+            <li> Volleyball Arena</li>
+            <li> Pickleball Court</li>
           </ul>
         </div>
       </div>
@@ -520,7 +512,7 @@
       </div>
     </footer>
 
-    <!-- Main JavaScript file -->
+    <div class="mobile-dock"><a href="#sports">Explore courts</a><a href="#contact">Plan a session <span aria-hidden="true">↗</span></a></div><!-- Main JavaScript file -->
     <script src="./script.js"></script>
   </body>
 </html>

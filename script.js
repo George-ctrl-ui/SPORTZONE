@@ -88,6 +88,7 @@
 
   function chooseSport(sport) {
     dropdown.value = sport;
+    dropdown.dispatchEvent(new Event('change'));
     document.getElementById('contact').scrollIntoView({ behavior: motion.matches ? 'instant' : 'smooth' });
     dropdown.focus({ preventScroll: true });
   }
@@ -165,7 +166,7 @@
     if (!form.reportValidity()) return;
     const values = Object.fromEntries(new FormData(form));
     const subject = `Sports Zone inquiry — ${values.sport}`;
-    const body = `Name: ${values.name.trim()}\nPhone: ${values.phone.trim()}\nEmail: ${values.email.trim()}\nSport: ${values.sport}\nPreferred date: ${values.date || 'Flexible'}\n\n${values.message.trim()}`;
+    const body = `Name: ${values.name.trim()}\nPhone: ${values.phone.trim()}\nEmail: ${values.email.trim()}\nSport: ${values.sport}\nPreferred date: ${values.date || 'Flexible'}\nPreferred time: ${values.time || 'Flexible'}\nDuration: ${values.duration} hour(s)\n\n${values.message.trim()}`;
     feedback.replaceChildren();
     const title = document.createElement('strong');
     title.textContent = 'Your inquiry is ready.';
@@ -189,4 +190,45 @@
     renderDrafts();
   });
   renderDrafts();
+
+  // Filters retain ordinary buttons and expose the selected state to assistive tech.
+  const filters = [...document.querySelectorAll('[data-filter]')];
+  const courts = [...document.querySelectorAll('.sport-card')];
+  filters.forEach(button => button.addEventListener('click', () => {
+    filters.forEach(item => {
+      const selected = item === button;
+      item.classList.toggle('active', selected);
+      item.setAttribute('aria-pressed', String(selected));
+    });
+    courts.forEach(card => {
+      card.hidden = button.dataset.filter !== 'All courts' && card.querySelector('h3').textContent !== button.dataset.filter;
+      if (!card.hidden) card.classList.add('visible');
+    });
+    document.getElementById('filter-status').textContent = button.dataset.filter === 'All courts' ? 'Showing all four courts.' : `Showing ${button.dataset.filter}.`;
+  }));
+
+  const rates = { Basketball: [250, 400], Badminton: [180, 300], Volleyball: [200, 350], Pickleball: [150, 250] };
+  const duration = document.getElementById('contact-duration');
+  const time = document.getElementById('contact-time');
+  function updateSession() {
+    const sport = dropdown.value;
+    const hours = Number(duration.value);
+    const range = rates[sport];
+    document.getElementById('session-sport').textContent = sport || 'Choose your court';
+    const parts = [`${hours} ${hours === 1 ? 'hour' : 'hours'}`];
+    if (dateInput.value) {
+      const date = new Date(`${dateInput.value}T12:00:00`);
+      parts.push(date.toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' }));
+    }
+    if (time.value) parts.push(time.value);
+    document.getElementById('session-detail').textContent = sport ? parts.join(' · ') : 'Select a sport and duration to see an estimate.';
+    document.getElementById('session-price').textContent = range ? `₱${(range[0] * hours).toLocaleString('en-PH')} – ₱${(range[1] * hours).toLocaleString('en-PH')}` : 'Let’s make time to play.';
+  }
+  [dropdown, duration, dateInput, time].forEach(input => input.addEventListener('change', updateSession));
+  updateSession();
+  // Stale prepared messages are removed as soon as the visitor edits their inquiry.
+  form.addEventListener('input', () => {
+    feedback.replaceChildren();
+    feedback.className = 'form-feedback';
+  });
 });
